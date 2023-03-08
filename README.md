@@ -14,8 +14,8 @@
 
 介绍图片来自 EveryoneWarp
 
-![5](../EveryoneWarp/readme/5.png)  
-![6](../EveryoneWarp/readme/6.png)
+![5](https://raw.githubusercontent.com/lgc-LLSEDev/EveryoneWarp/master/readme/5.png)  
+![6](https://raw.githubusercontent.com/lgc-LLSEDev/EveryoneWarp/master/readme/6.png)
 
 ## 使用
 
@@ -83,7 +83,7 @@ function hasNavigationTask(xuid) {}
 
 ### 示例
 
-[EveryoneWrap](../EveryoneWarp/EveryoneWarp.lls.js)
+[EveryoneWrap](https://github.com/lgc-LLSEDev/EveryoneWarp/blob/master/EveryoneWarp.lls.js)
 
 ### 指令
 
@@ -91,7 +91,7 @@ function hasNavigationTask(xuid) {}
 
 ## 安装
 
-见[插件下载安装教程](../tutorial.md)  
+将 `NavigationAPI.lls.js` 扔进 BDS 插件目录即可  
 `NavigationAPI.min.lls.js`为我用 js 压缩工具得到的代码
 
 一般情况下如果插件开发者使用了我给出的 URL 作为前置依赖的远程下载链接，则**本插件不需要另外手动下载安装**
