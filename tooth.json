@@ -1,0 +1,20 @@
+{
+  "format_version": 1,
+  "tooth": "github.com/lgc-LLSEDev/NavigationAPI",
+  "version": "0.1.2",
+  "dependencies": {},
+  "information": {
+    "name": "NavigationAPI",
+    "description": "其他插件可对接的导航 API",
+    "author": "student_2333 <lgc2333@126.com>",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/lgc-LLSEDev/NavigationAPI"
+  },
+  "placement": [
+    {
+      "source": "NavigationAPI.lls.js",
+      "destination": "plugins/NavigationAPI.js"
+    }
+  ],
+  "possession": []
+}
