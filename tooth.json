@@ -13,7 +13,7 @@
   "placement": [
     {
       "source": "NavigationAPI.lls.js",
-      "destination": "plugins/NavigationAPI.js"
+      "destination": "plugins/lib/NavigationAPI.lls.js"
     }
   ],
   "possession": []
