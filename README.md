@@ -14,8 +14,8 @@
 
 介绍图片来自 EveryoneWarp
 
-![5](https://raw.githubusercontent.com/lgc-LLSEDev/readme/main/EveryoneWarp/5.png)  
-![6](https://raw.githubusercontent.com/lgc-LLSEDev/readme/main/EveryoneWarp/6.png)
+![5](https://media.githubusercontent.com/media/lgc-LLSEDev/readme/main/EveryoneWarp/5.png)  
+![6](https://media.githubusercontent.com/media/lgc-LLSEDev/readme/main/EveryoneWarp/6.png)
 
 ## 使用
 
