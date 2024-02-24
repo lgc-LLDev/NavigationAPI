@@ -21,8 +21,19 @@
 
 ### 引入
 
+```jsonc
+// manifest.json
+{
+  // ...
+  "dependencies": [
+    {
+      "name": "NavigationAPI"
+    }
+  ]
+}
+```
+
 ```js
-ll.require('NavigationAPI');
 const newNavigationTask = ll.import('NavAPI_newTask');
 const clearNavigationTask = ll.import('NavAPI_clearTask');
 const hasNavigationTask = ll.import('NavAPI_hasTask');
