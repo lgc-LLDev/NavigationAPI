@@ -21,13 +21,8 @@
 
 ### 引入
 
-我已经将插件上传到了我自己的服务器，用 `require` 声明依赖时填入我给出的 URL 即可免除腐竹装前置的烦恼
-
 ```js
-ll.require(
-  'NavigationAPI.lls.js',
-  'https://www.lgc2333.top/llse/NavigationAPI.min.lls.js'
-);
+ll.require('NavigationAPI');
 const newNavigationTask = ll.import('NavAPI_newTask');
 const clearNavigationTask = ll.import('NavAPI_clearTask');
 const hasNavigationTask = ll.import('NavAPI_hasTask');
@@ -91,10 +86,9 @@ function hasNavigationTask(xuid) {}
 
 ## 安装
 
-将 `NavigationAPI.lls.js` 扔进 BDS 插件目录即可  
-`NavigationAPI.min.lls.js`为我用 js 压缩工具得到的代码
-
-一般情况下如果插件开发者使用了我给出的 URL 作为前置依赖的远程下载链接，则**本插件不需要另外手动下载安装**
+```bash
+lip install github.com/lgc-LLDev/NavigationAPI
+```
 
 ## 配置文件
 
@@ -128,12 +122,13 @@ QQ：3076823485
 
 ## 更新日志
 
-**如果是自动下载的依赖，请删除`plugins/lib/NavigationAPI.lls.js`文件来更新！（旧版请删除`plugins/lib/NavigationAPI_OldLXL.lls.js`）**
+### 0.1.2
 
-- 0.1.1
-  - 修复了在末地时显示坐标换算的 Bug
-  - 修复玩家到地方不能结束导航
-  - 修改了指令`stopnavigation` -> `stopnav`
-- 0.1.2
-  - 修复坐标换算显示错误的 Bug
-  - 适配旧版 lxl
+- 修复坐标换算显示错误的 Bug
+- 适配旧版 lxl
+
+### 0.1.1
+
+- 修复了在末地时显示坐标换算的 Bug
+- 修复玩家到地方不能结束导航
+- 修改了指令 `stopnavigation` -> `stopnav`

@@ -7,6 +7,23 @@ const exportNamespace = 'NavAPI';
 const tasks = new Map();
 const { Red, Green, Aqua, White, LightPurple, Clear, MinecoinGold } = Format;
 
+/**
+ * @typedef {Object} FloatPosObject
+ * @property {number} x
+ * @property {number} y
+ * @property {number} z
+ * @property {number} dimId
+ */
+/**
+ * @typedef {Object} Warp
+ * @property {FloatPosObject} pos
+ * @property {string} name
+ */
+
+/**
+ * @param {FloatPosObject} pos
+ * @returns {string}
+ */
 function formatPos(pos) {
   const { x, y, z, dimId } = pos;
   const dim = (() => {
@@ -32,8 +49,8 @@ function formatPos(pos) {
 /**
  * 停止导航任务
  *
- * @param {String} xuid 玩家Xuid
- * @returns {Boolean} 是否成功
+ * @param {string} xuid 玩家Xuid
+ * @returns {boolean} 是否成功
  */
 function clearNavigationTask(xuid) {
   const pl = mc.getPlayer(xuid);
@@ -53,8 +70,8 @@ function clearNavigationTask(xuid) {
 /**
  * 获取玩家是否正在导航中
  *
- * @param {String} xuid 玩家Xuid
- * @returns {Boolean} 玩家导航状态 true为正在导航
+ * @param {string} xuid 玩家Xuid
+ * @returns {boolean} 玩家导航状态 true为正在导航
  */
 function hasNavigationTask(xuid) {
   return !!tasks.get(xuid); // to boolean
@@ -63,24 +80,18 @@ function hasNavigationTask(xuid) {
 /**
  * 新建导航任务
  *
- * warp对象必须包含的项目示例
- * {
- *     "pos": {
- *         "x": 39.43924331665039,
- *         "y": 65.62001037597656,
- *         "z": 92.11305236816406,
- *         "dimId": 0
- *     },
- *     "name": "岩浆池"
- * }
- *
- * @param {String} xuid 玩家Xuid
- * @param {Object} warp warp对象，示例见上
- * @returns {Boolean} 是否成功
+ * @param {string} xuid 玩家Xuid
+ * @param {Warp} warp warp对象
+ * @returns {boolean} 是否成功
  */
 function newNavigationTask(xuid, warp) {
   const tmpPl = mc.getPlayer(xuid);
 
+  /**
+   * @param {number} x
+   * @param {number} z
+   * @returns {string}
+   */
   function formatXZPos(x, z) {
     return `${Green}${x.toFixed()} ${Red}~ ${Aqua}${z.toFixed()}`;
   }
@@ -99,7 +110,7 @@ function newNavigationTask(xuid, warp) {
     const { x: dx, y: dy, z: dz, dimId: dDim } = pos;
     const distance = Math.sqrt(
       (x - dx) * (x - dx) + (y - dy) * (y - dy) + (z - dz) * (z - dz)
-    ).toFixed(2);
+    );
 
     let msg =
       `${Green}${name}${Clear} | ` +
@@ -121,7 +132,9 @@ function newNavigationTask(xuid, warp) {
         return;
       }
 
-      msg += `${MinecoinGold}距离 ${Green}${distance} ${MinecoinGold}方块`;
+      msg +=
+        `${MinecoinGold}距离 ${Green}${distance.toFixed(2)} ` +
+        `${MinecoinGold}方块`;
     }
     pl.tell(msg, 5);
   }
@@ -135,7 +148,7 @@ function newNavigationTask(xuid, warp) {
 
 mc.listen('onLeft', (pl) => clearNavigationTask(pl.xuid));
 
-(() => {
+mc.listen('onServerStarted', () => {
   const cmd = mc.newCommand('stopnav', '停止导航', PermType.Any);
 
   cmd.setCallback((_, origin, out) => {
@@ -150,13 +163,13 @@ mc.listen('onLeft', (pl) => clearNavigationTask(pl.xuid));
 
   cmd.overload();
   cmd.setup();
-})();
+});
 
-ll.export(newNavigationTask, `${exportNamespace}_newTask`);
-ll.export(clearNavigationTask, `${exportNamespace}_clearTask`);
-ll.export(hasNavigationTask, `${exportNamespace}_hasTask`);
+ll.exports(newNavigationTask, `${exportNamespace}_newTask`);
+ll.exports(clearNavigationTask, `${exportNamespace}_clearTask`);
+ll.exports(hasNavigationTask, `${exportNamespace}_hasTask`);
 
-ll.registerPlugin(pluginName, '导航API', [0, 1, 2], {
+ll.registerPlugin(pluginName, '导航API', [0, 1, 3], {
   Author: 'student_2333',
   License: 'Apache-2.0',
 });

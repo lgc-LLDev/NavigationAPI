@@ -1,20 +1,24 @@
 {
-  "format_version": 1,
-  "tooth": "github.com/lgc-LLSEDev/NavigationAPI",
-  "version": "0.1.2",
-  "dependencies": {},
-  "information": {
+  "$schema": "https://raw.githubusercontent.com/lippkg/lip/main/schemas/tooth.v2.schema.json",
+  "format_version": 2,
+  "tooth": "github.com/lgc-LLDev/NavigationAPI",
+  "version": "0.1.3",
+  "info": {
     "name": "NavigationAPI",
-    "description": "其他插件可对接的导航 API",
-    "author": "lgc2333",
-    "license": "Apache-2.0",
-    "homepage": "https://github.com/lgc-LLSEDev/NavigationAPI"
+    "description": "A navigation library",
+    "author": "student_2333",
+    "tags": ["library", "lse", "quickjs", "navigate", "navigation"]
   },
-  "placement": [
-    {
-      "source": "NavigationAPI.lls.js",
-      "destination": "plugins/lib/NavigationAPI.lls.js"
-    }
-  ],
-  "possession": []
+  "files": {
+    "place": [
+      {
+        "src": "NavigationAPI.js",
+        "dest": "plugins/NavigationAPI/NavigationAPI.js"
+      },
+      {
+        "src": "manifest.json",
+        "dest": "plugins/NavigationAPI/manifest.json"
+      }
+    ]
+  }
 }
