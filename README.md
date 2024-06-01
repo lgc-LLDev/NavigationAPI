@@ -55,7 +55,7 @@ const hasNavigationTask = ll.import('NavAPI_hasTask');
  *         "x": 39.43924331665039,
  *         "y": 65.62001037597656,
  *         "z": 92.11305236816406,
- *         "dimId": 0
+ *         "dimid": 0
  *     },
  *     "name": "岩浆池"
  * }
@@ -124,14 +124,21 @@ QQ：3076823485
 感谢大家的赞助！你们的赞助将是我继续创作的动力！
 
 - [爱发电](https://afdian.net/@lgc2333)
+
 - <details>
     <summary>赞助二维码（点击展开）</summary>
-
+  
   ![讨饭](https://raw.githubusercontents.com/lgc2333/ShigureBotMenu/master/src/imgs/sponsor.png)
-
+  
   </details>
 
 ## 更新日志
+
+### 0.2.0
+
+- 接口dimId修改为dimid，适配ll, 方便对接
+
+- 优化actionbar的显示风格，坐标保留整数，统一xyz颜色
 
 ### 0.1.2
 

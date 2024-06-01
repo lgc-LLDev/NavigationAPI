@@ -12,7 +12,7 @@ const { Red, Green, Aqua, White, LightPurple, Clear, MinecoinGold } = Format;
  * @property {number} x
  * @property {number} y
  * @property {number} z
- * @property {number} dimId
+ * @property {number} dimid
  */
 /**
  * @typedef {Object} Warp
@@ -25,9 +25,9 @@ const { Red, Green, Aqua, White, LightPurple, Clear, MinecoinGold } = Format;
  * @returns {string}
  */
 function formatPos(pos) {
-  const { x, y, z, dimId } = pos;
+  const { x, y, z, dimid } = pos;
   const dim = (() => {
-    switch (dimId) {
+    switch (dimid) {
       case 0:
         return '主世界';
       case 1:
@@ -39,10 +39,10 @@ function formatPos(pos) {
     }
   })();
   return (
-    `${Green}${x.toFixed(2)} ` +
-    `${Red}${y.toFixed(2)} ` +
-    `${Aqua}${z.toFixed(2)}` +
-    `${White}， ${LightPurple}${dim}`
+    `${White}${x.toFixed(0)}, ` +
+    `${y.toFixed(0)}, ` +
+    `${z.toFixed(0)}, ` +
+    `${LightPurple}${dim}`
   );
 }
 
@@ -93,7 +93,7 @@ function newNavigationTask(xuid, warp) {
    * @returns {string}
    */
   function formatXZPos(x, z) {
-    return `${Green}${x.toFixed()} ${Red}~ ${Aqua}${z.toFixed()}`;
+    return `${Green}${x.toFixed()}, ~, ${z.toFixed()}`;
   }
 
   if (hasNavigationTask(xuid)) {
@@ -104,26 +104,26 @@ function newNavigationTask(xuid, warp) {
   function task() {
     const pl = mc.getPlayer(xuid);
     const {
-      pos: { x, y, z, dimid: dimId },
+      pos: { x, y, z, dimid: dimid },
     } = pl;
     const { pos, name } = warp;
-    const { x: dx, y: dy, z: dz, dimId: dDim } = pos;
+    const { x: dx, y: dy, z: dz, dimid: dDim } = pos;
     const distance = Math.sqrt(
       (x - dx) * (x - dx) + (y - dy) * (y - dy) + (z - dz) * (z - dz)
     );
 
     let msg =
       `${Green}${name}${Clear} | ` +
-      `${MinecoinGold}目标位置：${formatPos(pos)}${Clear} | `;
-    if (dimId !== dDim) {
+      `${MinecoinGold}目标位置: ${formatPos(pos)}${Clear} | `;
+    if (dimid !== dDim) {
       msg += (() => {
-        if (dimId === 2 || dDim === 2) return `${Red}维度不匹配`;
+        if (dimid === 2 || dDim === 2) return `${Red}维度不匹配`;
         if (dDim === 1)
           // warp点在地狱
-          return `${MinecoinGold}主世界坐标：${formatXZPos(dx * 8, dz * 8)}`;
+          return `${MinecoinGold}主世界坐标: ${formatXZPos(dx * 8, dz * 8)}`;
         if (dDim === 0)
           // warp点在主世界
-          return `${MinecoinGold}地狱坐标：${formatXZPos(dx / 8, dz / 8)}`;
+          return `${MinecoinGold}地狱坐标: ${formatXZPos(dx / 8, dz / 8)}`;
         return `${Red}非法导航`;
       })();
     } else {
@@ -169,7 +169,7 @@ ll.exports(newNavigationTask, `${exportNamespace}_newTask`);
 ll.exports(clearNavigationTask, `${exportNamespace}_clearTask`);
 ll.exports(hasNavigationTask, `${exportNamespace}_hasTask`);
 
-ll.registerPlugin(pluginName, '导航API', [0, 1, 3], {
+ll.registerPlugin(pluginName, '导航API', [0, 2, 0], {
   Author: 'student_2333',
   License: 'Apache-2.0',
 });
