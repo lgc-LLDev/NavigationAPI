@@ -1,6 +1,9 @@
 {
   "entry": "NavigationAPI.js",
   "name": "NavigationAPI",
+  "author": "student_2333",
+  "description": "其他插件可对接的导航 API",
+  "version": "0.1.4",
   "type": "lse-quickjs",
   "dependencies": [
     {
