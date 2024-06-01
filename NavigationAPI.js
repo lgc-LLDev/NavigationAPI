@@ -12,7 +12,7 @@ const { Red, Green, Aqua, White, LightPurple, Clear, MinecoinGold } = Format;
  * @property {number} x
  * @property {number} y
  * @property {number} z
- * @property {number} dimid
+ * @property {number} dimId
  */
 /**
  * @typedef {Object} Warp
@@ -25,9 +25,9 @@ const { Red, Green, Aqua, White, LightPurple, Clear, MinecoinGold } = Format;
  * @returns {string}
  */
 function formatPos(pos) {
-  const { x, y, z, dimid } = pos;
+  const { x, y, z, dimId } = pos;
   const dim = (() => {
-    switch (dimid) {
+    switch (dimId) {
       case 0:
         return '主世界';
       case 1:
@@ -104,10 +104,10 @@ function newNavigationTask(xuid, warp) {
   function task() {
     const pl = mc.getPlayer(xuid);
     const {
-      pos: { x, y, z, dimid: dimid },
+      pos: { x, y, z, dimid: dimId },
     } = pl;
     const { pos, name } = warp;
-    const { x: dx, y: dy, z: dz, dimid: dDim } = pos;
+    const { x: dx, y: dy, z: dz, dimId: dDim } = pos;
     const distance = Math.sqrt(
       (x - dx) * (x - dx) + (y - dy) * (y - dy) + (z - dz) * (z - dz)
     );
@@ -115,9 +115,9 @@ function newNavigationTask(xuid, warp) {
     let msg =
       `${Green}${name}${Clear} | ` +
       `${MinecoinGold}目标位置: ${formatPos(pos)}${Clear} | `;
-    if (dimid !== dDim) {
+    if (dimId !== dDim) {
       msg += (() => {
-        if (dimid === 2 || dDim === 2) return `${Red}维度不匹配`;
+        if (dimId === 2 || dDim === 2) return `${Red}维度不匹配`;
         if (dDim === 1)
           // warp点在地狱
           return `${MinecoinGold}主世界坐标: ${formatXZPos(dx * 8, dz * 8)}`;
@@ -169,7 +169,7 @@ ll.exports(newNavigationTask, `${exportNamespace}_newTask`);
 ll.exports(clearNavigationTask, `${exportNamespace}_clearTask`);
 ll.exports(hasNavigationTask, `${exportNamespace}_hasTask`);
 
-ll.registerPlugin(pluginName, '导航API', [0, 2, 0], {
+ll.registerPlugin(pluginName, '导航API', [0, 1, 4], {
   Author: 'student_2333',
   License: 'Apache-2.0',
 });
