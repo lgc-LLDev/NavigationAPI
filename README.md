@@ -27,16 +27,16 @@
   // ...
   "dependencies": [
     {
-      "name": "NavigationAPI"
-    }
-  ]
+      "name": "NavigationAPI",
+    },
+  ],
 }
 ```
 
 ```js
-const newNavigationTask = ll.import('NavAPI_newTask');
-const clearNavigationTask = ll.import('NavAPI_clearTask');
-const hasNavigationTask = ll.import('NavAPI_hasTask');
+const newNavigationTask = ll.import('NavAPI_newTask')
+const clearNavigationTask = ll.import('NavAPI_clearTask')
+const hasNavigationTask = ll.import('NavAPI_hasTask')
 ```
 
 ### 接口定义
@@ -127,16 +127,16 @@ QQ：3076823485
 
 - <details>
     <summary>赞助二维码（点击展开）</summary>
-  
+
   ![讨饭](https://raw.githubusercontents.com/lgc2333/ShigureBotMenu/master/src/imgs/sponsor.png)
-  
+
   </details>
 
 ## 更新日志
 
 ### 0.1.4
 
-- 优化actionbar的显示风格，坐标保留整数，统一xyz颜色
+- 优化 actionbar 的显示风格，坐标保留整数，统一 xyz 颜色
 
 ### 0.1.2
 
